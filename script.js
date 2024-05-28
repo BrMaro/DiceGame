@@ -15,7 +15,7 @@ let diceValuesArr = [];
 let rolls=0;
 let score = 0;
 let totalScore = 0;
-let round=1;
+let round = 1;
 
 
 const rollDice = () => {
@@ -120,10 +120,17 @@ keepScoreBtn.addEventListener('click',() => {
         }
     }
     if (selectedValue){
+        if(round>6){
+            setTimeout(() => {
+                alert(`Game Over! Your total score is ${totalScore}`);
+            }, 500);
+            
         rolls = 0;
-        round += 1;
+        round++;
         updateStats();
         resetRadioOption();
         updateScore(selectedValue,achieved);
+    } else{
+        alert("Please select an option or roll the dice");
     }
 });
